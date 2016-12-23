@@ -27,7 +27,7 @@ _QTS -> Systemsteuerung -> Privelegieneinstellungen -> Freigabe-Ordner -> Erweit
 
 
 
-### RSA Key
+### Erzeugung RSA Schlüssel
 
 Zunächst ist ein RSA Schlüsselpaar zu erzeugen. Nach _[SSH How To Set Up Authorized Keys][]_ folgt für den Befehl:
 ```sh
@@ -47,14 +47,14 @@ Zusätzlich kann der Schlüssel noch mit einem Passwort gesichert werden. Bei ei
 ``` 
 
 Nun sollten folgende beide Dateien vorhanden sein:
-* id_rsa 		(privater Schlüssel)
-* id_rsa.pub	(öffentlicher Schlüssel)
+* _id\_rsa_ 		(privater Schlüssel)
+* _id\_rsa.pub_		(öffentlicher Schlüssel)
 
 
 
-### Vorbereitung Nutzer
+### Schlüssel dem Nutzer (_myUser_) hinzufügen
 
-Als nächstes in das _Home_ Verzeichnes des Nutzer mit zukünftigen SSH zugang navigieren:
+Als nächstes in das _Home_ Verzeichnes des Nutzer mit zukünftigen SSH Zugang navigieren (Bei QTS in der Regel):
 ```sh
 cd /share/homes/<myUser>
 ``` 
@@ -64,9 +64,44 @@ Falls noch nicht vorhanden das Verzeichnis _.ssh_ anlegen:
 mkdir .ssh
 ``` 
 
+Dort der _authorized\_keys_ den Inhalt des Schlüssels _id\_rsa.pub_ hinzufügen:
+```sh
+cat id_rsa.pub >> authorized_keys
+``` 
+
+Nun sind die Berechtigungen wie folgt anzupassen:
+```sh
+chmod 0711 /share/homes/<myUser>
+chmod 0700 /share/homes/<myUser>/.ssh
+chmod 0600 /share/homes/<myUser>/.ssh/authorized_keys
+``` 
+
+Da sämtliche Zugriffe (Datei anlegen usw.) über den _Admin_ Zugang laufen, gehören diese Dateien dem Administrator. Damit der Zugriff funktionieren kann
+sind die Besitzrechte und Gruppenzugehörigkeit dem SSH Nutzer zu übertragen:
+```sh
+chown myUser /share/homes/<myUser>/.ssh
+cd /share/homes/<myUser>/.ssh
+chown myUser ./
+chown myUser authorized_keys
+``` 
+
+Ändern der Gruppenzugehörigkeit:
+```sh
+chgrp myUserGrp /share/homes/<myUser>/.ssh
+cd /share/homes/<myUser>/.ssh
+chgrp myUserGrp ./
+chgrp myUserGrp authorized_keys
+``` 
+
+Die Ausgabe von _ls -la_ sollte wie folgt aussehen:
+```sh
+drwx------    2 myUser myUserGrp      4096 Dec 23 21:18 ./
+drwxrwxrwx    4 myUser myUserGrp      4096 Dec 23 21:32 ../
+-rw-------    1 myUser myUserGrp       417 Dec 23 21:18 authorized_keys
+``` 
 
 
-
+### Einrichten SSH Deamon
 
 
 

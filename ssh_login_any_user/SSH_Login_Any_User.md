@@ -22,7 +22,7 @@ benötigt.
 _QTS -> Systemsteuerung -> Privelegieneinstellungen -> Freigabe-Ordner -> Erweiterte Ordnerzugrifssrechte aktivieren_ 
 
 <br/>
-<center><img src=" /inc/advancedDirectoryPermissions.png" height="100%" width="7100%" alt="Screenshot" title="Aktivierung erweiterter Ordnerzugriffsrechte" /></center>
+<center><img src=" /inc/advancedDirectoryPermissions.png" height="100%" width="100%" alt="Screenshot" title="Aktivierung erweiterter Ordnerzugriffsrechte" /></center>
 <br/>
 
 

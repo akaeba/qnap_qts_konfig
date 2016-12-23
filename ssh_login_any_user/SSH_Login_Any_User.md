@@ -12,8 +12,8 @@ Backupservers, dass das _Rsync_ oder _Rsnapshoot_ Protokoll nutzt wäre ein SSH 
 * QNAP NAS
 * Putty
 
-
-## Erweiterte Ordnerzugriffsrechte
+## QTS (Server)
+### Erweiterte Ordnerzugriffsrechte
 
 Standardmäßig ist beim dem QTS Betriebssystem die vereinfachte Ordnerfreigabe aktiviert. Die führt während des Betriebes immer wieder zu dem 
 überschreiben der mittles _chmod_ gesetzten Berechtigungen. Dies ist dahingehend ärgerlich, da der SSH Deamon bestimmte Ordnerberechtigungen
@@ -26,11 +26,21 @@ _QTS -> Systemsteuerung -> Privelegieneinstellungen -> Freigabe-Ordner -> Erweit
 <br/>
 
 
+### RSA Key
+
+Zunächst ist ein RSA Schlüsselpaar zu erzeugen. Nach _[SSH How To Set Up Authorized Keys][]_ folgt für den Befehl:
+
+```sh
+ssh-keygen -t rsa -C "My Amazing SSH Server"
+``` 
+
+Der Parameter _-C_ erlaubt die Vergabe eines Kommentars bei dem späteren Einfügen in die _authorized\_keys_
 
 
 
 
 
+## Putty (Client)
 
 
 

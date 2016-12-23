@@ -26,23 +26,21 @@ _QTS -> Systemsteuerung -> Privelegieneinstellungen -> Freigabe-Ordner -> Erweit
 <br/>
 
 
+
 ### RSA Key
 
 Zunächst ist ein RSA Schlüsselpaar zu erzeugen. Nach _[SSH How To Set Up Authorized Keys][]_ folgt für den Befehl:
-
 ```sh
 ssh-keygen -t rsa -C "My Amazing SSH Server"
 ``` 
 
 Der Parameter _-C_ erlaubt die Vergabe eines Kommentars der später in der _authorized\_keys_ auftaucht. Nach dem Aufruf des Kommandos erfolgt die Ausgabe:
-
 ```sh
 # Generating public/private rsa key pair. 
 # Enter file in which to save the key (/Users/UserName/.ssh/id_rsa):
 ``` 
 
 Zusätzlich kann der Schlüssel noch mit einem Passwort gesichert werden. Bei einfachem Bestätigen erfolgt keine Passwortvergabe:
-
 ```sh
 # Enter passphrase (empty for no passphrase):
 # Enter same passphrase again:
@@ -54,8 +52,17 @@ Nun sollten folgende beide Dateien vorhanden sein:
 
 
 
-
 ### Vorbereitung Nutzer
+
+Als nächstes in das _Home_ Verzeichnes des Nutzer mit zukünftigen SSH zugang navigieren:
+```sh
+cd /share/homes/<myUser>
+``` 
+
+Falls noch nicht vorhanden das Verzeichnis _.ssh_ anlegen:
+```sh
+mkdir .ssh
+``` 
 
 
 

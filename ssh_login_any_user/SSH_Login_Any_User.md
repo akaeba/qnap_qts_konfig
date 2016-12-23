@@ -34,7 +34,30 @@ Zunächst ist ein RSA Schlüsselpaar zu erzeugen. Nach _[SSH How To Set Up Autho
 ssh-keygen -t rsa -C "My Amazing SSH Server"
 ``` 
 
-Der Parameter _-C_ erlaubt die Vergabe eines Kommentars bei dem späteren Einfügen in die _authorized\_keys_
+Der Parameter _-C_ erlaubt die Vergabe eines Kommentars der später in der _authorized\_keys_ auftaucht. Nach dem Aufruf des Kommandos erfolgt die Ausgabe:
+
+```sh
+# Generating public/private rsa key pair. 
+# Enter file in which to save the key (/Users/UserName/.ssh/id_rsa):
+``` 
+
+Zusätzlich kann der Schlüssel noch mit einem Passwort gesichert werden. Bei einfachem Bestätigen erfolgt keine Passwortvergabe:
+
+```sh
+# Enter passphrase (empty for no passphrase):
+# Enter same passphrase again:
+``` 
+
+Nun sollten folgende beide Dateien vorhanden sein:
+* id_rsa 		(privater Schlüssel)
+* id_rsa.pub	(öffentlicher Schlüssel)
+
+
+
+
+### Vorbereitung Nutzer
+
+
 
 
 

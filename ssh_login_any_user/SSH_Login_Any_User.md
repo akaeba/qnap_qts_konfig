@@ -76,8 +76,8 @@ chmod 0700 /share/homes/<myUser>/.ssh
 chmod 0600 /share/homes/<myUser>/.ssh/authorized_keys
 ``` 
 
-Da sämtliche Zugriffe (Datei anlegen usw.) über den _Admin_ Zugang laufen, gehören diese Dateien dem Administrator. Damit der Zugriff funktionieren kann
-sind die Besitzrechte und Gruppenzugehörigkeit dem SSH Nutzer zu übertragen:
+Da sämtliche Zugriffe (Datei anlegen usw.) über den _Admin_ Zugang ausgeführt worden, gehören diese Dateien nun dem Administrator. Damit der SSH login funktionieren kann,
+müssen die Besitzrechte und Gruppenzugehörigkeit bei dem über SSH zu authentifizierendem Nutzer liegen:
 ```sh
 chown myUser /share/homes/<myUser>/.ssh
 cd /share/homes/<myUser>/.ssh

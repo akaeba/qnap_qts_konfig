@@ -19,9 +19,9 @@ Standardmäßig ist beim dem QTS Betriebssystem die vereinfachte Ordnerfreigabe 
 überschreiben der mittles _chmod_ gesetzten Berechtigungen. Dies ist dahingehend ärgerlich, da der SSH Deamon bestimmte Ordnerberechtigungen
 benötigt.
 
-<br/><br/>
-<center><img src=" /inc/advancedDirectoryPermissions.png" height="75%" width="75%" alt="Screenshot" title="Aktivierung erweiterter Ordnerzugriffsrechte" /></center>
-<br/><br/>
+_QTS <&rarr> _ 
+
+<center><img src=" /inc/advancedDirectoryPermissions.png" height="100%" width="7100%" alt="Screenshot" title="Aktivierung erweiterter Ordnerzugriffsrechte" /></center>
 
 
 

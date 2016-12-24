@@ -116,7 +116,7 @@ mv sshd_config sshd_port40_config
 ``` 
 
 Öffnen der Datei zur Editierung mittels _nano sshd\_config_ und folgende Anpassungen durchführen
-* Ändern des Stadardportes, auf z.B. Port 40 ([Stanardisierte Ports](https://de.wikipedia.org/wiki/Liste_der_standardisierten_Ports "Liste der standardisierten Ports"))
+* Ändern des Stadardportes, auf z.B. Port 40 ([Standardisierte Ports](https://de.wikipedia.org/wiki/Liste_der_standardisierten_Ports "Liste der standardisierten Ports"))
 * Unterbinden der Passwortauthentifizierung
 * Verbieten des _Root_ login
 * Angabe des Pfades zu den erlaubten öffentlichen RSA Schlüsseln
@@ -136,7 +136,7 @@ Den SSH Server im Debugmodus starten:
 /usr/sbin/sshd -ddd -f /opt/etc/ssh/sshd_port40_config
 ``` 
 
-In der Konsole sollte als letzte Meldung des Servers nun stehen:
+In der Konsole sollten als letztes folgende Meldungen des SSH Servers stehen:
 ```sh
 debug1: Bind to port 40 on 0.0.0.0.
 Server listening on 0.0.0.0 port 40.

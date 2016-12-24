@@ -120,6 +120,7 @@ mv sshd_config sshd_port40_config
 * Unterbinden der Passwortauthentifizierung
 * Verbieten des _Root_ login
 * Angabe des Pfades zu den erlaubten öffentlichen RSA Schlüsseln
+
 ```sh
 PasswordAuthentication no
 Port 40

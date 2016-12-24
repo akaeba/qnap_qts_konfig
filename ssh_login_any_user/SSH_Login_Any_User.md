@@ -76,8 +76,8 @@ chmod 0700 /share/homes/<myUser>/.ssh
 chmod 0600 /share/homes/<myUser>/.ssh/authorized_keys
 ``` 
 
-Da sämtliche Zugriffe (Datei anlegen usw.) über den _Admin_ Zugang ausgeführt worden, gehören diese Dateien nun dem Administrator. Damit der SSH login funktionieren kann,
-müssen die Besitzrechte und Gruppenzugehörigkeit bei dem über SSH zu authentifizierendem Nutzer liegen:
+Die Nutzung des _Admin_ SSH Zuganges bdeingt das sämtliche angelegte Dateien nun dem Benutzer _Admin_ gehören. Damit der SSH login funktionieren kann,
+müssen die Besitzrechte und die Gruppenzugehörigkeit bei dem über SSH zu authentifizierenden Nutzer liegen:
 ```sh
 chown myUser /share/homes/<myUser>/.ssh
 cd /share/homes/<myUser>/.ssh
@@ -96,7 +96,7 @@ chgrp myUserGrp authorized_keys
 Die Ausgabe von _ls -la_ sollte wie folgt aussehen:
 ```sh
 drwx------    2 myUser myUserGrp      4096 Dec 23 21:18 ./
-drwxrwxrwx    4 myUser myUserGrp      4096 Dec 23 21:32 ../
+drwx------    4 myUser myUserGrp      4096 Dec 23 21:32 ../
 -rw-------    1 myUser myUserGrp       417 Dec 23 21:18 authorized_keys
 ``` 
 

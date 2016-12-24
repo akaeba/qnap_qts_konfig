@@ -95,13 +95,53 @@ chgrp myUserGrp authorized_keys
 
 Die Ausgabe von _ls -la_ sollte wie folgt aussehen:
 ```sh
-drwx------    2 myUser myUserGrp      4096 Dec 23 21:18 ./
-drwx------    4 myUser myUserGrp      4096 Dec 23 21:32 ../
--rw-------    1 myUser myUserGrp       417 Dec 23 21:18 authorized_keys
+drwx------    2 <myUser> <myUserGrp>      4096 Dec 23 21:18 ./
+drwx------    4 <myUser> <myUserGrp>      4096 Dec 23 21:32 ../
+-rw-------    1 <myUser> <myUserGrp>       417 Dec 23 21:18 authorized_keys
 ``` 
 
 
 ### Einrichten SSH Deamon
+
+Zur Einrichtung des SSH Deamons empfiehlt sich die Einrichtung eines zweiten Servers mit separaten Port und eigener Konfiguration Die Vorteile dafür liegen:
+* Port Weiterleitung kann nur für den Deamon der unpreveligierte Benutzer hostet erfolgen
+* Erzwingen einer RSA Authentifizierung durch Unterbindung der Authentifizierung mittels Passwort
+
+Anlegen der zusätzlichen SSH Konfiguration
+```sh
+mkdir -p /opt/etc/ssh
+cd /opt/etc/ssh
+cp /etc/ssh/sshd_config ./
+mv sshd_config sshd_port40_config
+``` 
+
+Öffnen der Datei zur Editierung mittels _nano sshd\_config_ und folgende Anpassungen durchführen
+* Ändern des Stadardportes, auf z.B. Port 40 ([Stanardisierte Ports](https://de.wikipedia.org/wiki/Liste_der_standardisierten_Ports "Liste der standardisierten Ports"))
+* Unterbinden der Passwortauthentifizierung
+* Verbieten des _Root_ login
+* Angabe des Pfades zu den erlaubten öffentlichen RSA Schlüsseln
+```sh
+PasswordAuthentication no
+Port 40
+PermitRootLogin yes
+StrictModes no
+MaxAuthTries 3
+AuthorizedKeysFile      .ssh/authorized_keys
+AllowUsers <myUser>
+``` 
+
+Den SSH Server im Debugmodus starten:
+```sh
+/usr/sbin/sshd -ddd -f /opt/etc/ssh/sshd_port40_config
+``` 
+
+In der Konsole sollte als letzte Meldung des Servers nun stehen:
+```sh
+debug1: Bind to port 40 on 0.0.0.0.
+Server listening on 0.0.0.0 port 40.
+```
+
+
 
 
 

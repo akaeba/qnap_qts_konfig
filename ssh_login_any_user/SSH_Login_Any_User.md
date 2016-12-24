@@ -136,7 +136,7 @@ Den SSH Server im Debugmodus starten:
 /usr/sbin/sshd -ddd -f /opt/etc/ssh/sshd_port40_config
 ``` 
 
-In der Konsole sollten als letztes folgende Meldungen des SSH Servers stehen:
+In der Konsole sollten folgende Meldungen des SSH Servers zuletzt stehen:
 ```sh
 debug1: Bind to port 40 on 0.0.0.0.
 Server listening on 0.0.0.0 port 40.

@@ -145,7 +145,7 @@ Server listening on 0.0.0.0 port 40.
 
 ### Einrichten Init.d Script
 
-Um den automatischen Start des SSH Deamons zu gewährleisten ist ein _init.d_ Skript (z.B. _S40ssh\_<myPort>_) unter _/opt/etc/init.d_ anzulegen:
+Um den automatischen Start des SSH Deamons zu gewährleisten ist ein _init.d_ Skript (z.B. _S40ssh\_\<myPort\>_) unter _/opt/etc/init.d_ anzulegen:
 ```sh
 #!/bin/sh
 # Script to start/stop all user ssh authentification service
@@ -212,6 +212,17 @@ Damit das Skript automatisch nach dem Systemstart ausgeführt wird, den Artikel 
 
 
 ## Putty (Client)
+
+
+## Beobachtete Probleme
+
+* Nachdem SSH Login bekommt das _Home_ Verzeichnis des angemeldeten Benutzer, die Berechtigungen 777. Der SSH Deamon prüft vor dem Login die Berechtigungen, und erwartet für das _Home_
+Verzeichnis 700. Da diese nun aber auf 777 stehen verweigert der Deamon jeden weiteren Zugang. Die Lösung erfolgte aktuell über das Abschalten dieser Prüfung. In der Konfiguration
+des SSH Deamons sieht das wie folgt aus:
+
+```sh
+StrictModes no
+``` 
 
 
 ## Referenzen

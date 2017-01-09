@@ -146,7 +146,7 @@ Server listening on 0.0.0.0 port 40.
 ### Einrichten Init.d Script
 
 Um den automatischen Start des SSH Deamons zu gewährleisten ist ein _init.d_ Skript (z.B. _S40ssh\_\<myPort\>_) unter _/opt/etc/init.d_ anzulegen. 
-Das [_init.d_ Initialisierungsskript](/openTutorial/linux/qnap_qts/ssh_login_any_user/inc/S40ssh_port40 "Skript zum Start des SSH Deamons") bewältigt dabei folgende Aufgaben:
+Das [_init.d_ Initialisierungsskript]( /inc/S40ssh_port40 "Skript zum Start des SSH Deamons") bewältigt dabei folgende Aufgaben:
 * Start des SSH Deamons
 * Anlegen des _PID_-Files
 * Bereitstellung _start_/_stop_ Befehl

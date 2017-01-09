@@ -1,0 +1,59 @@
+#!/bin/sh
+# Script to start/stop all user ssh authentification service
+# Template: http://werxltd.com/wp/2012/01/05/simple-init-d-script-template/
+#
+
+
+PATH=/sbin:/bin:/usr/bin:/usr/sbin:/opt/bin:/opt/sbin
+
+
+# some definitions
+#
+prog=ssh_port40
+pidfile=/var/run/ssh_port40.pid
+lockfile=/var/lock/subsys/ssh_port40
+
+
+# start service
+#
+start(){
+  # try application launch
+  PID=`/usr/sbin/sshd -f /opt/etc/ssh/sshd_port40_config > /dev/null 2>&1 & echo $!`
+
+  # check for process id
+  if [ -z $PID ]; then
+    echo Start $prog failed.
+  else
+    echo $PID > $pidfile
+  fi
+}
+
+
+# kill service
+#
+stop() {
+  if [ -f $pidfile ]; then
+    kill $[`cat $pidfile`+1]
+    rm -f $pidfile
+  else
+    echo pidfile '$pidfile' not found
+  fi
+}
+
+
+# Parameter dispatching
+#
+case "$1" in
+  start)
+    start
+  ;;
+  stop)
+    stop
+  ;;
+  restart)
+    stop
+    start
+  ;;
+  *)
+    echo $"Usage: $prog {start|stop|restart}"
+esac

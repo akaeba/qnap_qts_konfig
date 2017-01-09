@@ -101,7 +101,7 @@ drwx------    4 <myUser> <myUserGrp>      4096 Dec 23 21:32 ../
 ``` 
 
 
-### Einrichten SSH Deamon
+### Konfiguration SSH Deamon
 
 Zur Einrichtung des SSH Deamons empfiehlt sich die Einrichtung eines zweiten Servers mit separaten Port und eigener Konfiguration Die Vorteile dafür liegen:
 * Port Weiterleitung kann nur für den Deamon der unpreveligierte Benutzer hostet erfolgen
@@ -116,7 +116,7 @@ mv sshd_config sshd_port40_config
 ``` 
 
 Öffnen der Datei zur Editierung mittels _nano sshd\_config_ und folgende Anpassungen durchführen
-* Ändern des Stadardportes, auf z.B. Port 40 ([Standardisierte Ports](https://de.wikipedia.org/wiki/Liste_der_standardisierten_Ports "Liste der standardisierten Ports"))
+* Ändern des Standardportes, auf z.B. Port 40 ([Standardisierte Ports](https://de.wikipedia.org/wiki/Liste_der_standardisierten_Ports "Liste der standardisierten Ports"))
 * Unterbinden der Passwortauthentifizierung
 * Verbieten des _Root_ login
 * Angabe des Pfades zu den erlaubten öffentlichen RSA Schlüsseln
@@ -143,14 +143,75 @@ Server listening on 0.0.0.0 port 40.
 ```
 
 
+### Einrichten Init.d Script
 
+Um den automatischen Start des SSH Deamons zu gewährleisten ist ein _init.d_ Skript (z.B. _S40ssh\_<myPort>_) unter _/opt/etc/init.d_ anzulegen:
+```sh
+#!/bin/sh
+# Script to start/stop all user ssh authentification service
+# Template: http://werxltd.com/wp/2012/01/05/simple-init-d-script-template/
+#
+
+
+PATH=/sbin:/bin:/usr/bin:/usr/sbin:/opt/bin:/opt/sbin
+
+
+# some definitions
+#
+prog=ssh_port40
+pidfile=/var/run/ssh_port40.pid
+lockfile=/var/lock/subsys/ssh_port40
+
+
+# start service
+#
+start(){
+  # try application launch
+  PID=`/usr/sbin/sshd -f /opt/etc/ssh/sshd_port40_config > /dev/null 2>&1 & echo $!`
+
+  # check for process id
+  if [ -z $PID ]; then
+    echo Start $prog failed.
+  else
+    echo $PID > $pidfile
+  fi
+}
+
+
+# kill service
+#
+stop() {
+  if [ -f $pidfile ]; then
+    kill $[`cat $pidfile`+1]
+    rm -f $pidfile
+  else
+    echo pidfile '$pidfile' not found
+  fi
+}
+
+
+# Parameter dispatching
+#
+case "$1" in
+  start)
+    start
+  ;;
+  stop)
+    stop
+  ;;
+  restart)
+    stop
+    start
+  ;;
+  *)
+    echo $"Usage: $prog {start|stop|restart}"
+esac
+```
+
+Damit das Skript automatisch nach dem Systemstart ausgeführt wird, den Artikel !TODO! berücksichtigen.
 
 
 ## Putty (Client)
-
-
-
-
 
 
 ## Referenzen

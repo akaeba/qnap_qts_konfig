@@ -145,70 +145,13 @@ Server listening on 0.0.0.0 port 40.
 
 ### Einrichten Init.d Script
 
-Um den automatischen Start des SSH Deamons zu gewährleisten ist ein _init.d_ Skript (z.B. _S40ssh\_\<myPort\>_) unter _/opt/etc/init.d_ anzulegen:
-```sh
-#!/bin/sh
-# Script to start/stop all user ssh authentification service
-# Template: http://werxltd.com/wp/2012/01/05/simple-init-d-script-template/
-#
+Um den automatischen Start des SSH Deamons zu gewährleisten ist ein _init.d_ Skript (z.B. _S40ssh\_\<myPort\>_) unter _/opt/etc/init.d_ anzulegen. 
+Das [_init.d_ Initialisierungsskript](openTutorial/linux/qnap_qts/ssh_login_any_user/inc/S40ssh_port40 "Skript zum Start des SSH Deamons") bewältigt dabei folgende Aufgaben:
+* Start des SSH Deamons
+* Anlegen des _PID_-Files
+* Bereitstellung _start_/_stop_ Befehl
 
-
-PATH=/sbin:/bin:/usr/bin:/usr/sbin:/opt/bin:/opt/sbin
-
-
-# some definitions
-#
-prog=ssh_port40
-pidfile=/var/run/ssh_port40.pid
-lockfile=/var/lock/subsys/ssh_port40
-
-
-# start service
-#
-start(){
-  # try application launch
-  PID=`/usr/sbin/sshd -f /opt/etc/ssh/sshd_port40_config > /dev/null 2>&1 & echo $!`
-
-  # check for process id
-  if [ -z $PID ]; then
-    echo Start $prog failed.
-  else
-    echo $PID > $pidfile
-  fi
-}
-
-
-# kill service
-#
-stop() {
-  if [ -f $pidfile ]; then
-    kill $[`cat $pidfile`+1]
-    rm -f $pidfile
-  else
-    echo pidfile '$pidfile' not found
-  fi
-}
-
-
-# Parameter dispatching
-#
-case "$1" in
-  start)
-    start
-  ;;
-  stop)
-    stop
-  ;;
-  restart)
-    stop
-    start
-  ;;
-  *)
-    echo $"Usage: $prog {start|stop|restart}"
-esac
-```
-
-Damit das Skript automatisch nach dem Systemstart ausgeführt wird, den Artikel !TODO! berücksichtigen.
+Zusätzlich ist die Ausführung der automatschischen Skriptausführung im Ordner _init.d_ einzurichten während des Systemstartes einzurichten.
 
 
 ## Putty (Client)

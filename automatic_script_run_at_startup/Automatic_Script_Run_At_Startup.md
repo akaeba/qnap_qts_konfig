@@ -29,7 +29,7 @@ Nach diesem _[Beispiel][Optware Init-Skripte nach Booten starten]_ folgt für _r
 ```sh
 #!/bin/sh
 # Purpose: Executes all scripts in init.d directory
-# SRC: http://www.welzels.de/blog/projekte/qnap-mods-tricks-und-projekte/optware-init-skripte-nach-$
+# SRC: http://www.welzels.de/blog/projekte/qnap-mods-tricks-und-projekte/optware-init-skripte-nach-booten-starten/
 # SRC: http://techlightup.blogspot.de/2013/08/qnap-automatically-run-script-at-startup.html
 
 
@@ -60,7 +60,6 @@ Diese Skript startet alle nicht RC-Skripte des Ordner _init.d_. Als Beispiel wü
 
 ## Ausführen _runInitd.sh_
 
-_[Beispiel][Optware Init-Skripte nach Booten starten]_
 
 
 ## Referenzen

@@ -151,7 +151,8 @@ Das [_init.d_ Initialisierungsskript]( /inc/S40ssh_port40 "Skript zum Start des 
 * Anlegen des _PID_-Files
 * Bereitstellung _start_/_stop_ Befehl
 
-Zusätzlich ist die Ausführung der automatschischen Skriptausführung im Ordner _init.d_ einzurichten während des Systemstartes einzurichten.
+Zusätzlich ist die _[automatischen Skriptausführung](/openTutorial/linux/qnap_qts/automatic_script_run_at_startup/Automatic_Script_Run_At_Startup.md)_ 
+des Ordners _init.d_ nachdem Systemhochlauf einzurichten.
 
 
 ## Putty (Client)

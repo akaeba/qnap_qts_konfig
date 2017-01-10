@@ -25,7 +25,7 @@ touch /share/MD0_DATA/.qpkg/runInitd/runInitd.sh
 nano /share/MD0_DATA/.qpkg/runInitd/runInitd.sh
 ``` 
 
-Nach diesem _[Beispiel][1]_ folgt für _runInitd.sh_:
+Nach diesem _[Beispiel][Optware Init-Skripte nach Booten starten]_ folgt für _runInitd.sh_:
 ```sh
 #!/bin/sh
 # Purpose: Executes all scripts in init.d directory
@@ -67,4 +67,4 @@ Diese Skript startet alle nicht RC-Skripte des Ordner _init.d_. Als Beispiel wü
 
 <!--- Internetlinks -->
 [QNAP: Automatically run a script at startup]:		http://techlightup.blogspot.de/2013/08/qnap-automatically-run-script-at-startup.html  							"Automatischer Skriptaufruf nach Systemhochlauf" 
-[1]:			http://www.welzels.de/blog/projekte/qnap-mods-tricks-und-projekte/optware-init-skripte-nach-booten-starten		"Ausfuehren von Startup Skripte des Ordners init.d"
+[Optware Init-Skripte nach Booten starten]:			www.google.de		"Ausführen von Startup Skripte des Ordners init.d"

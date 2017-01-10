@@ -19,15 +19,13 @@ zu starten, sind die Skripte des Ordners _init.d_ auszuführen. Dieses Skript se
 _[QNAP: Automatically run a script at startup][]_ Anwendung.
 
 Zunächst Anlegen des QPKG Verezeichnisses und des Skriptes zum Laden sämtlicher Folgeskripte:
-
 ```sh
 mkdir -p /share/MD0_DATA/.qpkg/runInitd
 touch /share/MD0_DATA/.qpkg/runInitd/runInitd.sh
 nano /share/MD0_DATA/.qpkg/runInitd/runInitd.sh
 ``` 
 
-Nach _[Optware Init Skripte nach Booten starten][]_ folgt für _runInitd.sh_:
-
+Nach einem _[Beispiel][Optware Init Skripte nach Booten starten]_ folgt für _runInitd.sh_:
 ```sh
 #!/bin/sh
 # Purpose: Executes all scripts in init.d directory
@@ -53,7 +51,6 @@ fi
 ``` 
 
 Diese Skript startet alle nicht RC-Skripte des Ordner _init.d_. Als Beispiel würden die letzten beiden Skripte ausgeführt, das Erste hingegen nicht:
-
 ```sh
 -rwxr-xr-x    1 admin    administ       140 Feb 14  2012 S70net-snmp*
 -rwxr-xr-x    1 admin    administ      1032 Jan  9 12:42 sane-backends*

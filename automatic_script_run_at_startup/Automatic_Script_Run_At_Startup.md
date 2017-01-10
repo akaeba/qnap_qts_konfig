@@ -16,12 +16,13 @@ ist es unter umständen erforderlich solch ein Skript nach dem Systemhochlauf au
 
 Einige optionale Dienste (_Optware_) nutzen das System _init.d_, im Verzeichnis _/opt/etc/init.d/_, zum initialisieren ihrer Anwendungen. Um nach jedem Systemstart die optionalen Dienste 
 zu starten, sind die Skripte des Ordners _init.d_ auszuführen. Dieses Skript selbst ist ebenfalls wieder zu starten. Hierfür findet die 
-[QPKG](http://techlightup.blogspot.de/2013/08/qnap-automatically-run-script-at-startup.html "QNAP: Automatically run a script at startup")
+[QPKG](http://techlightup.blogspot.de/2013/08/qnap-automatically-run-script-at-startup.html "QNAP: Automatically run a script at startup") basierte Methode Anwendung.
 
 Zunächst Anlegen des QPKG Verezeichnisses und des Skriptes zum Laden sämtlicher Folgeskripte:
 ```sh
 mkdir -p /share/MD0_DATA/.qpkg/runInitd
 touch /share/MD0_DATA/.qpkg/runInitd/runInitd.sh
+chmod +x /share/MD0_DATA/.qpkg/runInitd/runInitd.sh
 nano /share/MD0_DATA/.qpkg/runInitd/runInitd.sh
 ``` 
 
@@ -61,4 +62,27 @@ Diese Skript startet alle nicht RC-Skripte des Ordner _init.d_. Als Beispiel wü
 
 ## Ausführen _runInitd.sh_
 
+Den Start des Skriptes _runInitd.sh_ übernimmt nun das 
+[QPKG](http://techlightup.blogspot.de/2013/08/qnap-automatically-run-script-at-startup.html "QNAP: Automatically run a script at startup")
+System von QNAP. 
 
+Dazu die Datei _/etc/config/qpkg.conf_ öffnen:
+```sh
+nano /etc/config/qpkg.conf
+``` 
+
+Dort folgenden Eintrag am Ende hinzufügen:
+```sh
+[runInitd]
+Name = runInitd
+Version = 0.1
+Author = akae
+Date = 2017-01-10
+Shell = /share/MD0_DATA/.qpkg/runInitd/runInitd.sh
+Install_Path = /share/MD0_DATA/.qpkg/runInitd
+Enable = TRUE
+``` 
+
+Damit läuft der Systemstart nun wie folgt ab:
+* QPKG führt das Skript _runInitd.sh_ aus
+* _runInitd.sh_ führt nacheinander die nicht RC Skripte im Ordner _/opt/etc/init.d/_ aus

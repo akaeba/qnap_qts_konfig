@@ -16,7 +16,7 @@ ist es unter umständen erforderlich solch ein Skript nach dem Systemhochlauf au
 
 Einige optionale Dienste (_Optware_) nutzen das System _init.d_, im Verzeichnis _/opt/etc/init.d/_, zum initialisieren ihrer Anwendungen. Um nach jedem Systemstart die optionalen Dienste 
 zu starten, sind die Skripte des Ordners _init.d_ auszuführen. Dieses Skript selbst ist ebenfalls wieder zu starten. Hierfür findet die 
-[QPKG][QNAP: Automatically run a script at startup] basierte Methode Anwendung.
+[QPKG](http://techlightup.blogspot.de/2013/08/qnap-automatically-run-script-at-startup.html "QNAP: Automatically run a script at startup")
 
 Zunächst Anlegen des QPKG Verezeichnisses und des Skriptes zum Laden sämtlicher Folgeskripte:
 ```sh
@@ -62,9 +62,3 @@ Diese Skript startet alle nicht RC-Skripte des Ordner _init.d_. Als Beispiel wü
 ## Ausführen _runInitd.sh_
 
 
-
-## Referenzen
-
-<!--- Internetlinks -->
-[QNAP: Automatically run a script at startup]:		http://techlightup.blogspot.de/2013/08/qnap-automatically-run-script-at-startup.html  							"Automatischer Skriptaufruf nach Systemhochlauf" 
-[Optware Init-Skripte nach Booten starten]:			http://www.welzels.de/blog/projekte/qnap-mods-tricks-und-projekte/optware-init-skripte-nach-booten-starten		"Ausführen von Startup Skripte des Ordners init.d"

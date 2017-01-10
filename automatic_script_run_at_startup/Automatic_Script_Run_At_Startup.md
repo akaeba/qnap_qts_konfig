@@ -35,7 +35,6 @@ Nach _[Optware Init-Skripte nach Booten starten][]_ folgt für _runInitd.sh_:
 
 # Start init.d Scripts, if directory /opt/etc/init.d exists
 if [ -d /opt/etc/init.d ]; then
-  COUNT=199
   # For the content in /opt/etc/init.d
   for INIT_SRC in `ls /opt/etc/init.d/ | grep -v '~' | sort`
   do

@@ -25,7 +25,8 @@ touch /share/MD0_DATA/.qpkg/runInitd/runInitd.sh
 nano /share/MD0_DATA/.qpkg/runInitd/runInitd.sh
 ``` 
 
-Nach diesem [Beispiel][Optware Init-Skripte nach Booten starten] folgt für _runInitd.sh_:
+Nach diesem [Beispiel](http://www.welzels.de/blog/projekte/qnap-mods-tricks-und-projekte/optware-init-skripte-nach-booten-starten "Optware Init-Skripte nach Booten starten") 
+folgt für _runInitd.sh_:
 ```sh
 #!/bin/sh
 # Purpose: Executes all scripts in init.d directory
